@@ -1,0 +1,10 @@
+{
+    "auths": {
+        "myregistry.azurecr.io": {
+            "username": "mycontregis",
+            "password": "yi0tJ9Fp5p0/1DQtKyAPxGrFLRa3Gb33pDUNfHkE7T+ACRCUG43X"
+      
+        }
+    }
+}
+
