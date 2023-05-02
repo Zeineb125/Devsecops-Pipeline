@@ -12,6 +12,8 @@ spec:
       labels:
         app: basket-api
     spec:
+      imagePullSecrets:
+        - name: credentials
       
       containers:
         - name: basket-api
