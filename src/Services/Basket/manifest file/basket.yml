@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basket-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: basket-api
+  template:
+    metadata:
+      labels:
+        app: basket-api
+    spec:
+      
+      containers:
+        - name: basket-api
+          image: mycontregis.azurecr.io/basketapi:latest
+          ports:
+            - containerPort: 8081
+          env:
+            - name: REDIS_HOST
+              value: redis
+              # ^-- This should match the "name" field in the Redis Service
+            - name: REDIS_PORT
+              value: "6379"
+              # ^-- This should match the port that the Redis container is listening on
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: basket-api
+spec:
+  selector:
+    app: basket-api
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+  
