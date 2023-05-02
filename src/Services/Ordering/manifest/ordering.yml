@@ -34,6 +34,11 @@ spec:
           image: mycontregis.azurecr.io/orderingapi:latest
           ports:
             - containerPort: 8082
+          env:
+              - name: DB_HOST
+                value: sql-server
+              - name: DB_PORT
+                value: "1433"
       imagePullSecrets:
         - name: credentials
 
