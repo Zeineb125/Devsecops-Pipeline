@@ -31,10 +31,16 @@ spec:
           image: mycontregis.azurecr.io/mcr.microsoft.com/mssql/server:latest
           ports:
             - containerPort: 1433
+          
           env:
             - name: ACCEPT_EULA
               value: 'Y'
             - name: SA_PASSWORD
-              value: SwN12345678
+              value: password123
+            - name: SA_USER
+              value: my_sa_user
+            - name: MSSQL_PID
+              value: Developer
       imagePullSecrets:
-        - name: myregistrycredentials
+        - name: credentials
+     

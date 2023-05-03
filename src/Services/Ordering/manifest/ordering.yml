@@ -39,6 +39,11 @@ spec:
                 value: sql-server
               - name: DB_PORT
                 value: "1433"
+              - name: DB_USER
+                value: my_sa_user
+              - name: DB_PASSWORD
+                value: password123
       imagePullSecrets:
         - name: credentials
+      
 
