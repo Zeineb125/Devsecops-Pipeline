@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aggregator
+  labels:
+    app: aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aggregator
+  template:
+    metadata:
+      labels:
+        app: aggregator
+    spec:
+      containers:
+      - name: aggregator
+        image: mycontregis.azurecr.io/aggregator:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: credentials 
+   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aggregator
+spec:
+  selector:
+    app: aggregator
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
