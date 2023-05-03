@@ -43,6 +43,8 @@ spec:
                 value: my_sa_user
               - name: DB_PASSWORD
                 value: password123
+              - name: ConnectionStrings__OrderingContext
+                value: 'Server=order-db-svc;Database=orderDb;User Id=sa;Password=password123;'
       imagePullSecrets:
         - name: credentials
       
